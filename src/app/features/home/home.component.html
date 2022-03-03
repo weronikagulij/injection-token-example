@@ -1,6 +1,15 @@
-<div *ngFor="let template of templates$ | async; trackBy: trackByIdFn">
-  {{ template | json }}
-  <br />
-  <hr />
-  <br />
-</div>
+<section class="template__container">
+  <div
+    *ngFor="let template of templates$ | async; trackBy: trackByIdFn"
+    class="template__item"
+  >
+    <img [src]="template.image" alt="Template Image" />
+    <div class="template__text">
+      <p>
+        <a [href]="template.previewUrl" target="__blank">{{
+          template.title
+        }}</a>
+      </p>
+    </div>
+  </div>
+</section>

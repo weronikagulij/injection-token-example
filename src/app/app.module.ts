@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { INJECTION_TEMPLATE_SERVICE, TemplateService } from './core/api-services/template.service';
+import { HomeModule } from './features/home/home.module';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,15 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HomeModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: INJECTION_TEMPLATE_SERVICE,
+      useClass: TemplateService
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

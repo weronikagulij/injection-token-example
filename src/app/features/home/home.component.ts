@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { Template } from 'src/app/core/api-interfaces/template.model';
-import { TemplateService } from 'src/app/core/api-services/template.service';
+import { GetsAll, INJECTION_TEMPLATE_SERVICE, TemplateService } from 'src/app/core/api-services/template.service';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +9,9 @@ import { TemplateService } from 'src/app/core/api-services/template.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  templates$ = this.templateService.getAll();
+  templates$ = this.getsAllTemplates.getAll();
 
   trackByIdFn = (_: number, item: Template) => (item.id);
-  constructor(private templateService: TemplateService) { }
+  constructor(@Inject(INJECTION_TEMPLATE_SERVICE) private getsAllTemplates: GetsAll) { }
 
 }

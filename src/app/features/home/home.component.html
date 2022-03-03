@@ -1,4 +1,4 @@
-<div *ngFor="let template of templates$ | async">
+<div *ngFor="let template of templates$ | async; trackBy: trackByIdFn">
   {{ template | json }}
   <br />
   <hr />

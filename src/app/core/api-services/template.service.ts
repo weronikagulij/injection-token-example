@@ -8,6 +8,7 @@ export interface GetsAll {
   getAll(): Observable<Template[]>;
 }
 
+// todo: rename from INJECTION_TEMPLATE_SERVICE to INJECTION_SERVICE
 export const INJECTION_TEMPLATE_SERVICE = new InjectionToken<GetsAll>('INJECTION_TEMPLATE_SERVICE');
 
 @Injectable()
